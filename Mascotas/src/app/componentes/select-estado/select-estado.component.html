@@ -1,0 +1,6 @@
+<select [disabled]=!esAdmin (ngModelChange)="cambioEstado($event)" aria-placeholder="estado" [(ngModel)]='estado' name="estado" id="estado">
+    <option value="estado" selected>Estado</option>    
+    <option value="pendiente">Pendiente</option>
+    <option value="finalizado">Finalizado</option>
+    <option value="cancelado">Cancelado</option>
+</select>

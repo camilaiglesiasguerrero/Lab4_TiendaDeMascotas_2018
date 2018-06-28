@@ -1,0 +1,46 @@
+<app-menu></app-menu>
+<ngb-alert *ngIf="dangerMessage" type="danger" (close)="dangerMessage = null">{{ dangerMessage }}</ngb-alert>
+<table class="table table-condensed"> 
+  <thead>
+      <tr>
+          <th style="width: 25%;">RESERVAR TURNO</th>
+          <th style="width: 75%;">{{tituloMascotas}}</th>
+      </tr>
+    </thead>
+<tbody>
+
+  <tr> 
+    <td style="width: 25%;">
+        
+      <form [formGroup]="turnoForm"  (ngSubmit)="Reservar()" >
+        <div class="container" >
+            <label for="fecha">Fecha</label>
+            <div class="input-group-append">
+          <input style="vertical-align: middle" [formControl]="dia" class="form-control" placeholder="dd-mm-aaaa"
+          name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" readonly>
+          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+            <i class="fa fa-calendar" style="width: 1.2rem; height: 1rem; cursor: pointer;"> </i>
+          </button>
+        </div>
+      </div>
+        <div class="container" >
+            <label for="Hora">Hora</label>
+            <ngb-timepicker [spinners]="false" [formControl]="hora" [(ngModel)]="time" name="first"></ngb-timepicker>
+        </div>
+       <div class="container" style="text-align: center">
+            <label for="Mascota">Mascota</label>
+            <select [formControl]="unaMascota" [(ngModel)]="laMascota">
+              <option *ngFor="let m of mascotas" [ngValue]="m.nroFicha">(# {{m.nroFicha}}) {{m.tipo}} - Raza: {{m.raza}} - Color: {{m.color}} - {{m.edad}} años</option>
+            </select>
+          </div>
+      <div>
+        <br>
+          <button type="submit" class="btn btn-success" [disabled]="!turnoForm.valid">Reservar Turno</button>
+        </div>
+      </form>
+    </td>        
+    <td style="width: 75%;"><app-listado [listado]=listado [sonTurnos]=true></app-listado></td>
+</tr>  
+</tbody> 
+</table>
+

@@ -1,0 +1,14 @@
+<app-menu></app-menu>
+
+<table [hidden]=!esListado class="table table-condensed"> 
+    <thead>
+        <th>{{turnos}}</th>
+    </thead>
+    <tbody>
+        <tr>
+            <app-listado [listado]=listado [sonTurnos]=true></app-listado>
+        </tr>
+    </tbody>
+</table>
+
+<app-dashboard [hidden]=esListado ></app-dashboard>

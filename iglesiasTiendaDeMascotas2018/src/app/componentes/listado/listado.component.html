@@ -1,0 +1,41 @@
+<app-menu [hidden]=!mostrar></app-menu>
+
+<div style="margin-top: 3%">
+
+    
+    
+</div>
+
+<button (click)="exportToExcel()" class="btn btn-primary">Exportar a Excel</button>
+<table class="table table-condensed" style="margin-top:3%" > 
+    <thead>
+        <tr>
+            <th><font color="black" size="3">Ficha</font></th>
+            <th><select (ngModelChange)="onChange($event)" aria-placeholder="Tipo" [(ngModel)]='buscados' name="Tipo" id="tipo">
+                    <option value="Tipo" selected>Tipo</option>    
+                    <option value="gato">Gato</option>
+                    <option value="perro">Perro</option>
+                </select> <i class="fa fa-filter"></i></th>
+            <th><font color="black" size="3">Raza</font></th>
+            <th><font color="black" size="3">Color</font></th>
+            <th><font color="black" size="3">Edad</font></th>
+            <th><font color="black" size="3">Fecha</font></th>
+            <th><font color="black" size="3">Hora</font></th>
+            <th [hidden]=!mostrar><font color="black" size="3">Dueño</font></th>
+        </tr>
+      </thead>
+  <tbody>
+        <tr *ngFor="let item of aux">
+              <td><font color="black" size="3">{{item.nroFicha}} </font></td>
+              <td><font color="black" size="3">{{item.tipo}} </font></td>
+              <td><font color="black" size="3">{{item.raza}} </font></td>
+              <td><font color="black" size="3">{{item.color}} </font></td>
+              <td><font color="black" size="3">{{item.edad | edad}} </font></td>
+              <td><font color="black" size="3">{{item.fecha}} </font></td>        
+              <td><font color="black" size="3">{{item.hora}} </font></td>
+              <td [hidden]=!mostrar><font color="black" size="3">{{item.owner}} </font></td>
+        </tr>  
+  </tbody> 
+</table>
+  
+

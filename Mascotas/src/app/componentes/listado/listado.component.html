@@ -1,0 +1,60 @@
+<table class="table table-condensed" [hidden]=!sonMascotas> 
+        <thead>
+            <tr>
+                <th>Nro Ficha</th>
+                <th>Raza</th>
+                <th>Color</th>
+                <th>Edad</th>
+                <th>Tipo</th>
+                <th [hidden]="!esAdmin">Dueño</th>
+            </tr>
+          </thead>
+      <tbody>
+            <tr *ngFor="let item of listado"> 
+                <td>{{item.nroFicha}}</td>        
+                <td>{{item.raza}}</td>        
+                <td>{{item.color}}</td>        
+                <td>{{item.edad | edad}} </td>        
+                <td>{{item.tipo}}</td>        
+                <td [hidden]="!esAdmin">{{item.owner}}</td>        
+             
+            </tr>  
+      </tbody> 
+</table>
+
+
+<table class="table table-condensed" [hidden]=!sonTurnos> 
+    <thead>
+        <tr>
+            <th [hidden]=true >ID</th>
+            <th>Nro Ficha</th>
+            <th [hidden]=!esAdmin><select (ngModelChange)="onChange($event)" aria-placeholder="Tipo" [(ngModel)]='buscados' name="Tipo" id="tipo">
+                    <option value="Tipo" selected>Tipo</option>    
+                    <option value="gato">Gato</option>
+                    <option value="perro">Perro</option>
+                </select> <i class="fa fa-filter"></i></th>
+            <th [hidden]=esAdmin>Tipo</th>
+            <th>Raza</th>
+            <th>Color</th>
+            <th>Edad</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th [hidden]="!esAdmin">Dueño</th>
+            <th>Estado</th>
+        </tr>
+      </thead>
+  <tbody>
+        <tr appTurnos estado='{{item.estado}}' *ngFor="let item of listado"> 
+            <td [hidden]=true> {{item.id}}</td>
+            <td>{{item.nroFicha}}</td>    
+            <td>{{item.tipo}}</td>    
+            <td>{{item.raza}}</td>    
+            <td>{{item.color}}</td>    
+            <td>{{item.edad | edad}}</td>    
+            <td>{{item.fecha | fecha}}</td>        
+            <td>{{item.hora | hora}}</td>        
+            <td [hidden]="!esAdmin">{{item.owner}}</td>        
+            <td ><app-select-estado [id]=item.id [estado]=item.estado ></app-select-estado></td>
+        </tr>  
+  </tbody> 
+</table>

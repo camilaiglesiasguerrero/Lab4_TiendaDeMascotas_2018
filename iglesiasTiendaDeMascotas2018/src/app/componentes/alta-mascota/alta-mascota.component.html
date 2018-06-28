@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+
+{{Mensaje}}
+
+
+<div class="container" style="text-align:center; margin-top:3%">
+  <form>
+    <strong>FICHA DE MASCOTAS</strong>
+    <br><br>
+     
+<form [formGroup]="altaForm"  (ngSubmit)="Registrar()" >
+  <div class="container">
+
+    <input type="number" placeholder="Nro de ficha" name="nroFicha" [formControl]="nroFicha" required>
+    <br>
+    <br>
+    <input type="text" placeholder="Raza" name="rama"  [formControl]="raza" required>
+    <br>
+    <br>
+    <input type="text" placeholder="Color"  [formControl]="color" name="color" required>
+    <br>
+    <br>
+    <input type="text" placeholder="Edad"  [formControl]="edad" name="edad" required>
+    <br>
+    <br>
+    <label><b>Tipo</b></label>
+    <select [formControl]="tipo" name="Tipo" id="tipo">
+      <option value="gato">Gato</option>
+      <option value="perro">Perro</option>
+    </select> 
+
+    <div>
+      <button type="submit" class="btn btn-success" [disabled]="!altaForm.valid">Guardar</button>
+    </div>
+  </div>
+</form>
+</form>
+</div>
